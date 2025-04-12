@@ -24,6 +24,7 @@ jobs:
           script: |
             cd ~/www-infobit/www-infobit
             git pull origin main
-            cp -r ~/www-infobit/www-infobit/* /usr/share/nginx/html/  # Kopiranje statičkih fajlova
+            cp -r ~/www-infobit/www-infobit/* /usr/share/nginx/html/  # Kopiranje statičkih fajlov
+            cd ~/www-infobit
             docker-compose down
             docker-compose up -d  # Restartovanje nginx-a ako je potrebno
