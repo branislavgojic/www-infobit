@@ -22,8 +22,8 @@ jobs:
           username: ubuntu                        # Korisničko ime za pristup EC2 (obično ubuntu ili ec2-user)
           key: ${{ secrets.EC2_SSH_KEY }}         # SSH ključ sa kojeg GitHub može da pristupi tvojoj EC2 instanci
           script: |
-            cd ~/www-infobit/app
+            cd ~/www-infobit/www-infobit
             git pull origin main
-            cp -r ~/www-infobit/app/* /usr/share/nginx/html/  # Kopiranje statičkih fajlova
+            cp -r ~/www-infobit/www-infobit/* /usr/share/nginx/html/  # Kopiranje statičkih fajlova
             docker-compose down
             docker-compose up -d  # Restartovanje nginx-a ako je potrebno
