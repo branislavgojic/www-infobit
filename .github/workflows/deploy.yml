@@ -14,33 +14,30 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Step 2: Setup Node.js for React build
+      # Step 2: Setup Node.js for React/Vite build
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      # Step 3: Install and build React app
+      # Step 3: Install dependencies and build
       - name: Install dependencies and build
         run: |
           npm install
           npm run build
+          ls -la dist
 
-      # Step 4: List build contents (debug)
-      - name: List build folder
-        run: ls -la build
-
-      # Step 5: Copy build folder to EC2 (copy whole folder)
-      - name: Copy build folder to EC2
+      # Step 4: Copy dist folder to EC2
+      - name: Copy dist folder to EC2
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.EC2_IP }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "build"
-          target: "/home/ubuntu"
+          source: "dist/*"
+          target: "/home/ubuntu/dist"
 
-      # Step 6: SSH into EC2 and deploy build
+      # Step 5: SSH into EC2 and deploy build
       - name: Deploy on EC2
         uses: appleboy/ssh-action@v0.1.5
         with:
@@ -48,11 +45,9 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            # Copy build to nginx directory
             sudo rm -rf /usr/share/nginx/html/*
-            sudo cp -r /home/ubuntu/build/* /usr/share/nginx/html/
+            sudo cp -r /home/ubuntu/dist/* /usr/share/nginx/html/
 
-            # Optional: Restart docker containers
             cd ~/www-infobit
             docker-compose down
             docker-compose up -d
