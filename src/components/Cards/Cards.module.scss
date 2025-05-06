@@ -1,0 +1,41 @@
+@use '../../styles/utils/fluid' as *;
+
+.section {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  justify-content: center;
+  align-items: center;
+  @include fluid-padding((top, bottom), 4.5rem, calc(2vw + 0.5rem), 9rem);
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+
+  .item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #0f072c;
+    @include fluid-padding((left, right), 2.5rem, calc(2vw + 0.5rem), 2rem);
+
+    svg {
+      fill: #0f072c;
+    }
+
+    h2 {
+      font-family: Titillium Web;
+      font-weight: 700;
+      padding: 1rem 0;
+      text-align: center;
+    }
+
+    p {
+      @include fluid-font(1.4rem, 1vw, 2rem);
+      font-family: Titillium Web;
+      text-align: center;
+      padding-bottom: 2rem;
+    }
+  }
+}

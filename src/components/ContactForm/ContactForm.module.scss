@@ -1,0 +1,132 @@
+@use '../../styles/utils/fluid' as *;
+
+.section {
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  @include fluid-padding((top, bottom), 6rem, calc(8vw + 0.5rem), 12rem);
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+
+    h1 {
+      @include fluid-font(3rem, calc(4vw + 0.5rem), 8rem);
+      @include fluid-value(line-height, 5rem, calc(5vw + 0.5rem), 10rem);
+      font-weight: 400;
+      font-family: Zen Dots;
+      text-align: center;
+    }
+
+    p {
+      @include fluid-font(1.3rem, 2vw, 2rem);
+      letter-spacing: 0.1rem;
+      line-height: 2.5rem;
+      font-family: Titillium Web;
+      text-align: center;
+      padding: 2rem;
+    }
+  }
+
+  .wrapper {
+    width: 80%;
+    margin-top: 6rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow: 0 4px 20px rgba(238, 107, 107, 0.3);
+
+    .success {
+      color: #28a745;
+      background-color: #d4edda;
+      border: 1px solid #c3e6cb;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      animation: fadeIn 0.5s ease-in-out;
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (min-width: 768px) {
+      margin: 6rem;
+    }
+  }
+
+  .contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    .inputGroup {
+      display: flex;
+      flex-direction: column;
+      font-family: Lato, Helvetica, Arial, sans-serif;
+
+      label {
+        color: rgb(19, 1, 1);
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+      }
+
+      input,
+      textarea {
+        padding: 0.75rem;
+        font-size: 1rem;
+        font-family: Lato, Helvetica, Arial, sans-serif;
+
+        border-radius: 0.5rem;
+        border: 1px solid #ccc;
+        transition: border-color 0.3s;
+
+        &:focus {
+          border-color: #007bff;
+          outline: none;
+        }
+      }
+    }
+
+    button {
+      align-self: flex-end;
+      padding: 0.75rem 1.5rem;
+      background: white;
+      color: black;
+      border-color: black;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-family: Lato, Helvetica, Arial, sans-serif;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+      width: 100%;
+
+      @media (min-width: 768px) {
+        width: 150px;
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+.cell {
+  // flex: 1 1 100%;
+
+  @media (min-width: 768px) {
+    flex: 1 1 50%;
+  }
+}

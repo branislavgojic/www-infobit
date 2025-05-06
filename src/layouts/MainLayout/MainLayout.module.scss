@@ -1,0 +1,43 @@
+.layout {
+  position: relative;
+  height: 100dvh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background-image: url('../../assets/images/background/background.png');
+  background-size: cover;
+  background-position: center center;
+  overflow-x: hidden;
+
+  .cshape {
+    width: 150px;
+    position: absolute;
+    fill: rgb(2, 143, 163);
+  }
+
+  .first {
+    top: 20%;
+    left: -75px;
+  }
+
+  .second {
+    top: 80%;
+    left: 47%;
+  }
+
+  .third {
+    top: 45%;
+    left: 80%;
+  }
+
+  .container {
+    height: 100%;
+    position: absolute;
+    overflow: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}

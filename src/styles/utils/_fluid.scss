@@ -1,0 +1,28 @@
+// Fluid value: clamp(min, fluid, max)
+@mixin fluid-value($property, $min, $fluid, $max) {
+  #{$property}: clamp(#{$min}, #{$fluid}, #{$max});
+}
+
+// Fluid dimension (width/height)
+@mixin fluid-dimension($property, $min, $fluid, $max) {
+  @include fluid-value($property, $min, $fluid, $max);
+}
+
+// Fluid font-size
+@mixin fluid-font($min, $fluid, $max) {
+  font-size: clamp(#{$min}, #{$fluid}, #{$max});
+}
+
+// Fluid padding
+@mixin fluid-padding($directions, $min, $fluid, $max) {
+  @each $direction in $directions {
+    padding-#{$direction}: clamp(#{$min}, #{$fluid}, #{$max});
+  }
+}
+
+// Fluid margin
+@mixin fluid-margin($directions, $min, $fluid, $max) {
+  @each $direction in $directions {
+    margin-#{$direction}: clamp(#{$min}, #{$fluid}, #{$max});
+  }
+}

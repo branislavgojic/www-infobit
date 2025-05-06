@@ -1,0 +1,76 @@
+@use '../../styles/utils/fluid.scss' as *;
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  color: #ffffff;
+  align-items: center;
+  justify-content: center;
+  @include fluid-padding((top, bottom), 4rem, calc(8vw + 0.5rem), 12rem);
+
+  .image {
+    display: flex;
+    justify-content: center;
+
+    img {
+      @include fluid-dimension(height, 30rem, 60vw, 60rem);
+    }
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    @include fluid-padding((top, bottom), 2.5rem, calc(2vw + 0.5rem), 3rem);
+    @include fluid-padding((left, right), 2.5rem, calc(2vw + 0.5rem), 2rem);
+
+    h1 {
+      @include fluid-font(3.6rem, calc(4vw + 0.5rem), 8rem);
+      @include fluid-value(line-height, 5rem, calc(5vw + 0.5rem), 10rem);
+      font-weight: 400;
+      font-family: Zen Dots;
+      text-align: center;
+    }
+
+    p {
+      @include fluid-font(1.5rem, 1.5vw, 2rem);
+      letter-spacing: 0.1rem;
+      line-height: 2.5rem;
+      font-family: Titillium Web;
+      text-align: center;
+    }
+
+    .consult {
+      display: flex;
+      justify-content: center;
+
+      p {
+        @include fluid-font(1rem, 1vw, 2rem);
+        letter-spacing: 0.4px;
+        font-weight: 700;
+        font-family: Titillium Web;
+        padding: 1rem;
+        border-radius: 10px;
+        background-color: #ffffff;
+        color: rgb(15, 7, 44);
+        width: 100%;
+
+        @media (min-width: 768px) {
+          width: 250px;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row-reverse;
+  }
+}
+
+.cell {
+  flex: 1 1 100%;
+
+  @media (min-width: 768px) {
+    flex: 1 1 50%;
+  }
+}
