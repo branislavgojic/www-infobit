@@ -1,7 +1,7 @@
-import styles from './ContactForm.module.scss';
+import styles from "./ContactForm.module.scss";
 
-import { useRef, useState } from 'react';
-import emailjs from '@emailjs/browser';
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 
 function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
@@ -15,21 +15,21 @@ function ContactForm() {
 
     emailjs
       .sendForm(
-        'service_8097j1o',
-        'template_lo1gbbn',
+        "service_8097j1o",
+        "template_lo1gbbn",
         formRef.current,
-        'IQY6XdJksHp7YmZGO'
+        "IQY6XdJksHp7YmZGO"
       )
       .then(
         (result) => {
-          console.log('SUCCESS!', result.text);
+          console.log("SUCCESS!", result.text);
           setSubmitted(true);
           if (formRef.current) {
             formRef.current.reset();
           }
         },
         (error) => {
-          console.log('FAILED...', error.text);
+          console.log("FAILED...", error.text);
         }
       );
   };
@@ -111,11 +111,7 @@ function ContactForm() {
               ></textarea>
             </div>
 
-            {sending ? (
-              <button type="submit">Submit</button>
-            ) : (
-              <span className={styles.loader}></span>
-            )}
+            <button type="submit">Submit</button>
           </form>
         )}
       </section>

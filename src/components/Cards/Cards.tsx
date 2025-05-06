@@ -1,7 +1,7 @@
-import styles from './Cards.module.scss';
-import Computer from '../../assets/images/content/computer.svg?react';
-import Head from '../../assets/images/content/head.svg?react';
-import Reliable from '../../assets/images/content/reliable.svg?react';
+import styles from "./Cards.module.scss";
+import Computer from "../../assets/images/content/computer.svg?react";
+import Head from "../../assets/images/content/head.svg?react";
+import Reliable from "../../assets/images/content/reliable.svg?react";
 
 function Cards() {
   return (
