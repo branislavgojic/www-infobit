@@ -14,17 +14,41 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Step 2: SSH setup
-      - name: Set up SSH for EC2
+      # Step 2: Setup Node.js for React build
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      # Step 3: Install and build React app
+      - name: Install dependencies and build
+        run: |
+          npm install
+          npm run build
+
+      # Step 4: Copy build folder to EC2
+      - name: Copy build folder to EC2
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.EC2_IP }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "build/*"
+          target: "/home/ubuntu/react-app-build"
+
+      # Step 5: SSH into EC2 and deploy build
+      - name: Deploy on EC2
         uses: appleboy/ssh-action@v0.1.5
         with:
-          host: ${{ secrets.EC2_IP }}             # IP address
+          host: ${{ secrets.EC2_IP }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd ~/www-infobit/www-infobit
-            git pull origin main
-            cp -r ~/www-infobit/www-infobit/* /usr/share/nginx/html/
+            # Copy build to nginx dir
+            sudo rm -rf /usr/share/nginx/html/*
+            sudo cp -r /home/ubuntu/react-app-build/* /usr/share/nginx/html/
+
+            # Optional: Docker restart if needed
             cd ~/www-infobit
             docker-compose down
             docker-compose up -d
