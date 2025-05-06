@@ -5,10 +5,9 @@ import emailjs from "@emailjs/browser";
 
 function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null);
-  const sending = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (!formRef.current) return;
@@ -105,7 +104,7 @@ function ContactForm() {
                 id="message"
                 name="message"
                 placeholder="Message*"
-                rows="5"
+                rows={5}
                 required
                 minLength={10}
               ></textarea>
