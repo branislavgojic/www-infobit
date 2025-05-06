@@ -26,17 +26,21 @@ jobs:
           npm install
           npm run build
 
-      # Step 4: Copy build folder to EC2
+      # Step 4: List build contents (debug)
+      - name: List build folder
+        run: ls -la build
+
+      # Step 5: Copy build folder to EC2 (copy whole folder)
       - name: Copy build folder to EC2
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.EC2_IP }}
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
-          source: "build/*"
-          target: "/home/ubuntu/react-app-build"
+          source: "build"
+          target: "/home/ubuntu"
 
-      # Step 5: SSH into EC2 and deploy build
+      # Step 6: SSH into EC2 and deploy build
       - name: Deploy on EC2
         uses: appleboy/ssh-action@v0.1.5
         with:
@@ -44,11 +48,11 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            # Copy build to nginx dir
+            # Copy build to nginx directory
             sudo rm -rf /usr/share/nginx/html/*
-            sudo cp -r /home/ubuntu/react-app-build/* /usr/share/nginx/html/
+            sudo cp -r /home/ubuntu/build/* /usr/share/nginx/html/
 
-            # Optional: Docker restart if needed
+            # Optional: Restart docker containers
             cd ~/www-infobit
             docker-compose down
             docker-compose up -d
