@@ -1,4 +1,4 @@
-@use '../../styles/utils/fluid.scss' as *;
+@use "../../styles/utils/fluid.scss" as *;
 
 .banner {
   display: flex;
@@ -13,7 +13,7 @@
     justify-content: center;
 
     img {
-      @include fluid-dimension(height, 30rem, 60vw, 60rem);
+      @include fluid-dimension(height, 20rem, 60vw, 60rem);
     }
   }
 
