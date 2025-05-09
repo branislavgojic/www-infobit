@@ -1,5 +1,5 @@
 import styles from "./Footer.module.scss";
-import logo from "../../assets/images/logo/logo.png";
+import logo from "../../assets/images/logo/logo.webp";
 import X from "../../assets/images/content/x.svg?react";
 import Linkedin from "../../assets/images/content/linkedin.svg?react";
 

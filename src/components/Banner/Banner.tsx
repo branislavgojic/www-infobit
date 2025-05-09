@@ -1,5 +1,5 @@
-import styles from './Banner.module.scss';
-import shape from '../../assets/images/content/shape.png';
+import styles from "./Banner.module.scss";
+import shape from "../../assets/images/content/shape.webp";
 
 function Banner() {
   return (
@@ -21,8 +21,8 @@ function Banner() {
           className={`${styles.consult}`}
           onClick={() =>
             document
-              .getElementById('contact-form')
-              ?.scrollIntoView({ behavior: 'smooth' })
+              .getElementById("contact-form")
+              ?.scrollIntoView({ behavior: "smooth" })
           }
         >
           <p>Consult Now</p>

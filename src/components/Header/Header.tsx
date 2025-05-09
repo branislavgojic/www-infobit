@@ -1,5 +1,5 @@
-import styles from './Header.module.scss';
-import logo from '../../assets/images/logo/logo.png';
+import styles from "./Header.module.scss";
+import logo from "../../assets/images/logo/logo.webp";
 
 function Header() {
   return (
