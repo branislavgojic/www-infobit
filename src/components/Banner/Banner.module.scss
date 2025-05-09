@@ -13,7 +13,7 @@
     justify-content: center;
 
     img {
-      @include fluid-dimension(height, 20rem, 60vw, 60rem);
+      @include fluid-dimension(height, 20rem, 40vw, 50rem);
     }
   }
 
