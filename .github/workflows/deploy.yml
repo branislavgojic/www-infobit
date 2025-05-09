@@ -35,7 +35,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           source: "dist/*"
-          target: "/home/ubuntu/dist"
+          target: "/home/ubuntu/"
 
       # Step 5: SSH into EC2 and deploy build
       - name: Deploy on EC2
