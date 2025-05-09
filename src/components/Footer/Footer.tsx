@@ -20,7 +20,14 @@ function Footer() {
           </a>
         </li>
         <li>
-          <X />
+          <a
+            href="https://x.com/info_infobit"
+            target="_blank"
+            rel="noopener"
+            aria-label="X"
+          >
+            <X />
+          </a>
         </li>
       </ul>
     </div>
