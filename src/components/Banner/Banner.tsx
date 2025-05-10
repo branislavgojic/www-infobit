@@ -1,5 +1,5 @@
 import styles from "./Banner.module.scss";
-import shape from "../../assets/images/content/shape.webp";
+import shape from "../../assets/images/content/sfera.webp";
 
 function Banner() {
   return (

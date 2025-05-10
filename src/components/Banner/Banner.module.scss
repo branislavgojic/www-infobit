@@ -13,7 +13,7 @@
     justify-content: center;
 
     img {
-      @include fluid-dimension(height, 20rem, 40vw, 50rem);
+      @include fluid-dimension(height, 25rem, 45vw, 60rem);
     }
   }
 
@@ -45,7 +45,7 @@
       justify-content: center;
 
       p {
-        @include fluid-font(1rem, 1vw, 2rem);
+        @include fluid-font(1.2rem, 1vw, 2rem);
         letter-spacing: 0.4px;
         font-weight: 700;
         font-family: Titillium Web;
